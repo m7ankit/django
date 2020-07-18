@@ -1,0 +1,58 @@
+{% extends 'ank/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+    	<div class="box-element">
+    		<a class="btn btn-outline-dark" href="{% url 'store' %}"><--Continue Shopping</a>
+    		<br>	
+    		<br>
+    		<table class="table">
+    			<tr>
+    				<th><strong><h5>Items : 3</h5></strong></th>
+    			
+	    			<th><stong><h5>Total Price : 2500rs</h5></th></stong>
+
+	    			<th>
+	    				<a style="float: right" button class="btn btn-success" href="{% url 'checkout' %}" >Checkout</button></th></a>
+	    			</th>	
+	    		</tr>
+			</table>
+    	</div>
+
+    </div>
+    <div class="col-lg-12">
+    	<div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex :2"><strong>Item</strong></div>
+                <div style="flex :1"><strong>Price</strong></div>
+                <div style="flex :1"><strong>Quantity</strong></div>
+                <div style="flex :1"><strong>Total</strong></div>
+            </div>
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src="{% static '/images/placeholder.png' %}"></div>
+                <div style="flex :2">Product 1</div>
+                <div style="flex :1">299rs</div>
+                <div style="flex :1">
+                    <p class="quantity">2</p>
+                </div>
+                <div style="flex :1">600</div>
+                
+
+
+
+
+            </div>
+
+
+
+    	</div>
+
+    	
+    </div>
+  </div>
+</div>
+{% endblock %}
