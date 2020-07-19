@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import *
 
 # Create your views here.
 def home(request):
@@ -21,13 +21,35 @@ def home(request):
 	return render(request,'ank/dashboard.html',context)
 
 def store(request):
-	context={}
+	products = Product.objects.all()
+	context={'products':products}
 	return render(request,'ank/store.html',context)
 
 def cart(request):
-	context={}
+	if request.user.is_authenticated:
+		customer=request.user.customer #this os to set one to one rekationship
+		order,created = Order.objects.get_or_create(customer=customer,complete=False)
+		items = order.orderitem_set.all()
+	else:
+		items=[]
+		items={'get_cart_total':0,'get_items_total':0}
+
+
+
+	context={'items':items,'order':order}
 	return render(request,'ank/cart.html',context)
 
 def checkout(request):
-	context={}
+	if request.user.is_authenticated:
+		customer=request.user.customer 
+		order,created = Order.objects.get_or_create(customer=customer,complete=False)
+		items = order.orderitem_set.all()
+	else:
+		items=[]
+		items={'get_cart_total':0,'get_items_total':0}
+
+
+
+	context={'items':items,'order':order}
+
 	return render(request,'ank/checkout.html',context)
